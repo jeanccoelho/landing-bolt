@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-gray-900 antialiased overflow-x-hidden;
+  }
+
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-10vh) translateX(0);
+    }
+    100% {
+      transform: translateY(110vh) translateX(20vw);
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12;
+  }
+  
+  .card {
+    @apply bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-6 transition-transform hover:scale-105;
+  }
+
+  .section-container {
+    @apply py-16 md:py-24 min-h-screen flex flex-col justify-center relative;
+  }
+
+  .back-to-top {
+    @apply fixed bottom-6 right-6 p-3 bg-primary text-white rounded-full shadow-lg 
+           hover:bg-primary/90 transition-all transform hover:scale-110 z-50
+           opacity-0 pointer-events-none;
+  }
+
+  .back-to-top.visible {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  .snowflake {
+    @apply fixed pointer-events-none opacity-70 z-10;
+    animation: snowfall linear infinite;
+  }
+
+  .star {
+    @apply absolute bg-yellow-200 rounded-full;
+    animation: twinkle 1.5s ease-in-out infinite;
+  }
+
+  .holiday-gradient {
+    @apply bg-gradient-to-br from-[#1e3a8a] via-[#00579f] to-[#5dc4b8];
+  }
+
+  .festive-border {
+    @apply border-2 border-[#E3B04B];
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00579f] to-[#5dc4b8];
+  }
+
+  .text-holiday {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#E3B04B] via-[#00579f] to-[#5dc4b8];
+  }
+}
